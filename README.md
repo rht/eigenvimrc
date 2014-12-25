@@ -1,2 +1,2 @@
-1. ```mkdir -p github_vimrc```
+1. ```mkdir -p github_vimrcs```
 2. ```python eigenvimrc.py```
