@@ -3,7 +3,8 @@
 
 Tentative result:
 
-Most common vim config out of 21 vimrc's
+Most common vim config out of 21 vimrc's:
+
 0. return, 32
 1. call append(line(, 20
 2. set nocompatible, 17
