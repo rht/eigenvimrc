@@ -1,7 +1,9 @@
+This script scrapes vimrc's hosted in github and returns the most commonly used vim configurations.
+
 1. ```mkdir -p github_vimrcs```
 2. ```python eigenvimrc.py```
 
-Tentative result:
+#Tentative result
 
 Most common vim config out of 21 vimrc's:
 
