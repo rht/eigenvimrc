@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-import shutil
 import re
 import collections
 import time
@@ -13,7 +12,7 @@ step3 = 1
 step4 = 1
 step5 = 1
 
-#step 1: collect links to vimrc's
+# step 1: collect links to vimrc's
 if step1:
     print "collecting vimrc links..."
     page = 1
@@ -27,18 +26,18 @@ if step1:
                 txts['items'].extend(items)
             else:
                 txts['items'] = items
-            print "receiving page %d, length %d" %(page, len(r.text.encode('utf8')))
+            print "receiving page %d, length %d" % (page, len(r.text.encode('utf8')))
         time.sleep(1)
         page += 1
-    with open('github.json','wb') as f:
+    with open('github.json', 'wb') as f:
         json.dump(txts, f)
 
-#step 2: scrape vimrc's
+# step 2: scrape vimrc's
 if step2:
     print "downloading vimrc's"
     github_data = json.load(open('github.json'))['items']
     counter = 0
-    #essentially `mkdir -p github_vimrcs`
+    # essentially `mkdir -p github_vimrcs`
     if not os.path.isdir("github_vimrcs"):
         os.makedirs("github_vimrcs")
     for i in github_data:
@@ -47,9 +46,9 @@ if step2:
             with open('github_vimrcs/'+ i['full_name'].replace('/',''),'wb') as f:
                 f.write(r.text.encode('utf8'))
         counter += 1
-        print "%.2f%%" %(counter*1./len(github_data)*100)
+        print "%.2f%%" % (counter*1./len(github_data)*100)
 
-#step 3: process data
+# step 3: process data
 if step3:
     vimrcs = []
     total_vimrc = 0
@@ -57,32 +56,33 @@ if step3:
 
     for vimrc in os.listdir('github_vimrcs'):
         total_vimrc += 1
-        txt = open('github_vimrcs/'+vimrc,'r').read().split('\n')
+        txt = open('github_vimrcs/'+vimrc, 'r').read().split('\n')
         sanitized_txt = []
         for line in txt:
             if (not line.startswith('\"')) and not any(s in line for s in excluded_keywords):
                 # strip comments
-                sanitized_txt.append(re.sub('\".*$','', line))
+                sanitized_txt.append(re.sub('\".*$', '', line))
                 # strip trailing whitespaces
                 sanitized_txt[-1] = sanitized_txt[-1].strip()
                 # strip empty lines
-                if len(sanitized_txt[-1]) == 0: sanitized_txt.pop()
+                if len(sanitized_txt[-1]) == 0:
+                    sanitized_txt.pop()
         vimrcs.append(sanitized_txt)
 
-    #flatten the nested list
+    # flatten the nested list
     vimrcs = [item for sublist in vimrcs for item in sublist]
 
     print "Most common vim config out of " + str(total_vimrc) + " vimrc's"
     eigenvimrc = collections.Counter(vimrcs).most_common(100)
-    for n,i in enumerate(eigenvimrc):
-        print "%d. %s, %.2f%%" %(n, i[0], i[1]*100./total_vimrc)
+    for n, i in enumerate(eigenvimrc):
+        print "%d. %s, %.2f%%" % (n, i[0], i[1]*100./total_vimrc)
 
-#step 4: generate eigenvimrc.vim
+# step 4: generate eigenvimrc.vim
 if step4:
     if not step3:
         print "this step depends on step #3, please enable step3"
         exit()
-    #essentially `mkdir -p plugin`
+    # essentially `mkdir -p plugin`
     if not os.path.isdir("plugin"):
         os.makedirs("plugin")
     with open('plugin/eigenvimrc.vim', 'wb') as f:
@@ -90,7 +90,7 @@ if step4:
             if i[1]*1./total_vimrc >= .5:
                 f.write(i[0]+'\n')
 
-#step 5: generate plot for analysis
+# step 5: generate plot for analysis
 if step5:
     if not step3:
         print "this step depends on step #3, please enable step3"
