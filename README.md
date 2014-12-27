@@ -8,7 +8,10 @@ The "voting" process may iterate as follows:
 3. goto #1
 
 #Install
-Go to ```~/.vim/bundle```, clone this repo, make sure pathogen is available, make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
+1. Go to ```~/.vim/bundle```
+2. Clone this repo
+3. Make sure pathogen is available
+4. Make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
 
 #Result
 Most common vim config out of 289 vimrc's
@@ -65,4 +68,4 @@ Most common vim config out of 289 vimrc's
 49. let mapleader =, 14.53%
 
 #Plot
-[](fig.png)
+![plot](fig.png)
