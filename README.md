@@ -1,59 +1,68 @@
 This script scrapes vimrc's hosted in github and returns the most commonly used vim configurations.
 
-1. ```mkdir -p github_vimrcs```
-2. ```python eigenvimrc.py```
+```python eigenvimrc.py```
 
-#Tentative result
+The "voting" process may iterate as follows:
+1. People curate their vimrc's.
+2. 50% of the most commonly used settings gets assimilated into default.
+3. goto #1
 
-Most common vim config out of 21 vimrc's:
+#Install
+Go to ```~/.vim/bundle```, clone this repo, make sure pathogen is available, make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
 
-0. return, 32
-1. call append(line(, 20
-2. set nocompatible, 17
-3. set expandtab, 17
-4. set incsearch, 16
-5. if has(, 16
-6. syntax on, 15
-7. filetype plugin indent on, 15
-8. set ruler, 14
-9. set hlsearch, 14
-10. filetype off, 13
-11. set smarttab, 13
-12. set autoindent, 13
-13. set number, 13
-14. set showmatch, 12
-15. set ignorecase, 12
-16. set wildmenu, 12
-17. set smartcase, 12
-18. NeoBundle, 12
-19. augroup END, 11
-20. set shiftwidth=4, 10
-21. set laststatus=2, 10
-22. execute, 10
-23. return a:char, 10
-24. set encoding=utf-8, 9
-25. Bundle 'gmarik/vundle', 9
-26. call vundle#rc(), 9
-27. set mouse=a, 9
-28. set showcmd, 9
-29. set shiftwidth=2, 8
-30. set rtp+=~/.vim/bundle/vundle/, 8
-31. syn match pythonError, 8
-32. set t_Co=256, 8
-33. Bundle 'scrooloose/nerdtree', 8
-34. Bundle, 8
-35. set background=dark, 8
-36. set tabstop=2, 8
-37. \ }, 8
-38. set smartindent, 7
-39. set wrap, 7
-40. set hidden, 7
-41. syntax enable, 7
-42. set tabstop=4, 7
-43. let mapleader =, 7
-44. filetype plugin on, 6
-45. set noerrorbells, 6
-46. filetype indent on, 6
-47. set foldmethod=indent, 6
-48. set cursorline, 6
-49. set softtabstop=4, 6
+#Result
+Most common vim config out of 289 vimrc's
+
+0. set nocompatible, 73.70%
+1. syntax on, 73.01%
+2. set expandtab, 61.94%
+3. filetype plugin indent on, 60.55%
+4. set incsearch, 59.86%
+5. set hlsearch, 57.79%
+6. set number, 57.44%
+7. set shiftwidth=4, 53.98%
+8. set tabstop=4, 52.94%
+9. set ignorecase, 49.83%
+10. set ruler, 49.48%
+11. set laststatus=2, 48.79%
+12. set autoindent, 48.10%
+13. set showmatch, 39.79%
+14. filetype off, 37.72%
+15. set smartcase, 35.64%
+16. filetype plugin on, 35.64%
+17. set wildmenu, 35.29%
+18. set showcmd, 34.26%
+19. set t_Co=256, 33.56%
+20. set nobackup, 30.80%
+21. set softtabstop=4, 30.10%
+22. set encoding=utf-8, 29.76%
+23. set smarttab, 29.76%
+24. set backspace=indent,eol,start, 27.68%
+25. set background=dark, 26.99%
+26. exe, 25.61%
+27. set smartindent, 25.26%
+28. set mouse=a, 24.22%
+29. set hidden, 23.88%
+30. set rtp+=~/.vim/bundle/vundle/, 23.88%
+31. filetype indent on, 23.53%
+32. autocmd!, 23.53%
+33. set cursorline, 23.18%
+34. exec, 23.18%
+35. set noswapfile, 22.49%
+36. syntax enable, 20.76%
+37. filetype on, 20.42%
+38. set shiftwidth=2, 19.72%
+39. set tabstop=2, 19.03%
+40. set nu, 18.69%
+41. set wrap, 18.69%
+42. set nowrap, 17.99%
+43. set showmode, 16.26%
+44. set autoread, 16.26%
+45. au!, 16.26%
+46. set guioptions-=T, 16.26%
+47. set noerrorbells, 14.88%
+48. echon, 14.88%
+49. let mapleader =, 14.53%
+
+#Plot
+[](fig.png)
