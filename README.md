@@ -3,6 +3,7 @@ This script scrapes vimrc's hosted in github and returns the most commonly used 
 ```python eigenvimrc.py```
 
 The "voting" process may iterate as follows:
+
 1. People curate their vimrc's.
 2. 50% of the most commonly used settings gets assimilated into default.
 3. goto #1
