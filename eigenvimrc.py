@@ -7,8 +7,11 @@ import collections
 import time
 
 step1 = 0
-step2 = 0
+step2 = 0  # most time intensive
+
 step3 = 1
+step4 = 1
+step5 = 1
 
 #step 1: collect links to vimrc's
 if step1:
@@ -35,6 +38,9 @@ if step2:
     print "downloading vimrc's"
     github_data = json.load(open('github.json'))['items']
     counter = 0
+    #essentially `mkdir -p github_vimrcs`
+    if not os.path.isdir("github_vimrcs"):
+        os.makedirs("github_vimrcs")
     for i in github_data:
         r = requests.get('https://raw.githubusercontent.com/'+i['full_name']+'/master/.vimrc')
         if r.status_code == 200:
@@ -47,7 +53,7 @@ if step2:
 if step3:
     vimrcs = []
     total_vimrc = 0
-    excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else', 'endif', 'return', 'augroup', 'Bundle']
+    excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else', 'endif', 'return', 'augroup', 'Bundle', 'execute', '\\ }', '\\']
 
     for vimrc in os.listdir('github_vimrcs'):
         total_vimrc += 1
@@ -67,5 +73,28 @@ if step3:
     vimrcs = [item for sublist in vimrcs for item in sublist]
 
     print "Most common vim config out of " + str(total_vimrc) + " vimrc's"
-    for n,i in enumerate(collections.Counter(vimrcs).most_common(50)):
+    eigenvimrc = collections.Counter(vimrcs).most_common(100)
+    for n,i in enumerate(eigenvimrc):
         print "%d. %s, %.2f%%" %(n, i[0], i[1]*100./total_vimrc)
+
+#step 4: generate eigenvimrc.vim
+if step4:
+    if not step3:
+        print "this step depends on step #3, please enable step3"
+        exit()
+    #essentially `mkdir -p plugin`
+    if not os.path.isdir("plugin"):
+        os.makedirs("plugin")
+    with open('plugin/eigenvimrc.vim', 'wb') as f:
+        for i in eigenvimrc:
+            if i[1]*1./total_vimrc >= .5:
+                f.write(i[0]+'\n')
+
+#step 5: generate plot for analysis
+if step5:
+    if not step3:
+        print "this step depends on step #3, please enable step3"
+        exit()
+    import pylab
+    pylab.plot([i[1] for i in eigenvimrc])
+    pylab.savefig('fig.png')
