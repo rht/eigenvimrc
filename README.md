@@ -18,6 +18,7 @@ The "voting" process may iterate as follows:
 
 #Result
 Most common vim config out of 411 vimrc's
+
 0. syntax on, 70.80%
 1. set nocompatible, 70.32%
 2. set expandtab, 61.80%
