@@ -1,9 +1,12 @@
 set nocompatible
 syntax on
 set expandtab
-filetype plugin indent on
 set incsearch
-set hlsearch
+filetype plugin indent on
 set number
+set hlsearch
 set shiftwidth=4
+set autoindent
+set ignorecase
+set ruler
 set tabstop=4

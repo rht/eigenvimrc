@@ -1,3 +1,5 @@
+TODO: use ghtorrent
+
 This script scrapes vimrc's hosted in github and returns the most commonly used vim configurations.
 
 ```python eigenvimrc.py```
@@ -15,108 +17,108 @@ The "voting" process may iterate as follows:
 4. Make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
 
 #Result
-Most common vim config out of 289 vimrc's
-
-0. set nocompatible, 73.70%
-1. syntax on, 73.01%
-2. set expandtab, 61.94%
-3. filetype plugin indent on, 60.55%
-4. set incsearch, 59.86%
-5. set hlsearch, 57.79%
-6. set number, 57.44%
-7. set shiftwidth=4, 53.98%
-8. set tabstop=4, 52.94%
-9. set ignorecase, 49.83%
-10. set ruler, 49.48%
-11. set laststatus=2, 48.79%
-12. set autoindent, 48.10%
-13. set showmatch, 39.79%
-14. filetype off, 37.72%
-15. set smartcase, 35.64%
-16. filetype plugin on, 35.64%
-17. set wildmenu, 35.29%
-18. set showcmd, 34.26%
-19. set t_Co=256, 33.56%
-20. set nobackup, 30.80%
-21. set softtabstop=4, 30.10%
-22. set encoding=utf-8, 29.76%
-23. set smarttab, 29.76%
-24. set backspace=indent,eol,start, 27.68%
-25. set background=dark, 26.99%
-26. exe, 25.61%
-27. set smartindent, 25.26%
-28. set mouse=a, 24.22%
-29. set hidden, 23.88%
-30. set rtp+=~/.vim/bundle/vundle/, 23.88%
-31. filetype indent on, 23.53%
-32. autocmd!, 23.53%
-33. set cursorline, 23.18%
-34. exec, 23.18%
-35. set noswapfile, 22.49%
-36. syntax enable, 20.76%
-37. filetype on, 20.42%
-38. set shiftwidth=2, 19.72%
-39. set tabstop=2, 19.03%
-40. set nu, 18.69%
-41. set wrap, 18.69%
-42. set nowrap, 17.99%
-43. set showmode, 16.26%
-44. set autoread, 16.26%
-45. au!, 16.26%
-46. set guioptions-=T, 16.26%
-47. set noerrorbells, 14.88%
-48. echon, 14.88%
-49. let mapleader =, 14.53%
-50. set list, 13.49%
-51. endfor, 13.15%
-52. echo, 13.15%
-53. let rules += [, 12.46%
-54. set softtabstop=2, 12.46%
-55. colorscheme desert, 12.11%
-56. endf, 11.76%
-57. set cindent, 11.42%
-58. set cmdheight=2, 11.07%
-59. set undofile, 11.07%
-60. set ai, 10.73%
-61. autocmd BufReadPost *, 10.73%
-62. set scrolloff=3, 10.38%
-63. set shiftround, 10.38%
-64. set backspace=2, 10.03%
-65. endwhile, 10.03%
-66. set novisualbell, 10.03%
-67. try, 9.69%
-68. set history=1000, 9.69%
-69. set autochdir, 9.69%
-70. set lazyredraw, 9.69%
-71. endtry, 9.69%
-72. set visualbell, 9.69%
-73. set foldmethod=indent, 9.34%
-74. let mapleader=, 9.34%
-75. set title, 9.34%
-76. set magic, 9.00%
-77. set foldenable, 9.00%
-78. set clipboard=unnamed, 8.65%
-79. set termencoding=utf-8, 8.65%
-80. let g:neocomplcache_enable_at_startup = 1, 8.30%
-81. set nowb, 8.30%
-82. set ttyfast, 8.30%
-83. set linebreak, 8.30%
-84. colorscheme solarized, 8.30%
-85. set backup, 7.96%
-86. set wildmode=list:longest, 7.96%
-87. set lbr, 7.96%
-88. catch, 7.96%
-89. set t_vb=, 7.61%
-90. set encoding=utf8, 7.61%
-91. set si, 7.61%
-92. set guioptions-=m, 7.27%
-93. break, 6.92%
-94. map <C-h> <C-W>h, 6.57%
-95. endfun, 6.57%
-96. map <C-k> <C-W>k, 6.57%
-97. map <C-l> <C-W>l, 6.57%
-98. map <C-j> <C-W>j, 6.57%
-99. set enc=utf-8, 6.23%
+Most common vim config out of 411 vimrc's
+0. syntax on, 70.80%
+1. set nocompatible, 70.32%
+2. set expandtab, 61.80%
+3. set incsearch, 57.91%
+4. set number, 57.91%
+5. filetype plugin indent on, 57.42%
+6. set hlsearch, 55.72%
+7. set shiftwidth=4, 49.88%
+8. set autoindent, 49.39%
+9. set tabstop=4, 48.42%
+10. set ignorecase, 47.93%
+11. set ruler, 47.69%
+12. set laststatus=2, 46.23%
+13. set showmatch, 37.47%
+14. filetype off, 34.06%
+15. set smartcase, 33.82%
+16. filetype plugin on, 33.33%
+17. set showcmd, 32.60%
+18. set wildmenu, 31.39%
+19. set t_Co=256, 29.68%
+20. set nobackup, 29.44%
+21. set smarttab, 28.95%
+22. set softtabstop=4, 28.47%
+23. set backspace=indent,eol,start, 27.74%
+24. set encoding=utf-8, 27.25%
+25. set background=dark, 27.01%
+26. set smartindent, 26.03%
+27. set hidden, 23.60%
+28. set mouse=a, 22.38%
+29. set shiftwidth=2, 21.65%
+30. set cursorline, 21.41%
+31. filetype indent on, 21.17%
+32. set rtp+=~/.vim/bundle/vundle/, 21.17%
+33. set noswapfile, 21.17%
+34. syntax enable, 20.44%
+35. exe, 20.19%
+36. filetype on, 18.98%
+37. autocmd!, 18.98%
+38. set tabstop=2, 18.49%
+39. exec, 18.49%
+40. set wrap, 17.76%
+41. set nowrap, 17.76%
+42. set nu, 15.82%
+43. set guioptions-=T, 15.57%
+44. set autoread, 15.33%
+45. set showmode, 14.36%
+46. set noerrorbells, 14.36%
+47. set list, 14.36%
+48. au!, 14.36%
+49. let mapleader =, 13.87%
+50. set softtabstop=2, 12.65%
+51. colorscheme desert, 11.92%
+52. echo, 11.68%
+53. set cindent, 11.19%
+54. endfor, 11.19%
+55. set novisualbell, 10.71%
+56. echon, 10.46%
+57. set visualbell, 10.46%
+58. autocmd BufReadPost *, 10.22%
+59. set undofile, 10.22%
+60. let mapleader=, 10.22%
+61. set shiftround, 10.22%
+62. set cmdheight=2, 9.98%
+63. set scrolloff=3, 9.98%
+64. endf, 9.73%
+65. set ai, 9.49%
+66. set title, 9.49%
+67. try, 9.25%
+68. set backspace=2, 9.25%
+69. endtry, 9.25%
+70. set history=1000, 9.00%
+71. endwhile, 8.76%
+72. let rules += [, 8.76%
+73. set magic, 8.27%
+74. set foldenable, 8.27%
+75. set lazyredraw, 8.27%
+76. set termencoding=utf-8, 8.27%
+77. set foldmethod=indent, 8.03%
+78. set t_vb=, 8.03%
+79. colorscheme solarized, 8.03%
+80. set backup, 7.79%
+81. set autochdir, 7.79%
+82. catch, 7.79%
+83. set nowb, 7.54%
+84. set lbr, 7.54%
+85. set wildmode=list:longest, 7.54%
+86. set ttyfast, 7.54%
+87. set linebreak, 7.54%
+88. set clipboard=unnamed, 7.30%
+89. let g:neocomplcache_enable_at_startup = 1, 6.81%
+90. set si, 6.81%
+91. map <C-h> <C-W>h, 6.57%
+92. set encoding=utf8, 6.57%
+93. map <C-k> <C-W>k, 6.57%
+94. map <C-l> <C-W>l, 6.57%
+95. map <C-j> <C-W>j, 6.57%
+96. nnoremap ; :, 6.33%
+97. nnoremap k gk, 6.33%
+98. nnoremap j gj, 6.33%
+99. set guioptions-=m, 6.33%
 
 #Plot
+Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.
 ![plot](fig.png)

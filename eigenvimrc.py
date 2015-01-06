@@ -5,12 +5,17 @@ import re
 import collections
 import time
 
-step1 = 0
-step2 = 0  # most time intensive
+# requires internet connection
+step1 = 1
+step2 = 1  # most time intensive
 
+# doesn't require internet connection
 step3 = 1
 step4 = 1
 step5 = 1
+
+api_url = 'https://api.github.com/search/repositories'
+content_url = 'https://raw.githubusercontent.com/'
 
 # step 1: collect links to vimrc's
 if step1:
@@ -18,16 +23,19 @@ if step1:
     page = 1
 
     txts = json.loads("{}")
-    while page < 100:
-        r = requests.get('https://api.github.com/search/repositories?q=vimrc&L=VimL&page='+str(page))
+    while page < 2000:
+        r = requests.get('%s?q=vimrc&L=VimL&page=%d&access_token=%s'
+                         % (api_url, page,
+                            '33245750450464986df3c83a4e65de625d8f1f90'))
         if r.status_code == 200:
             items = json.loads(r.text.encode('utf8'))['items']
             if txts:
                 txts['items'].extend(items)
             else:
                 txts['items'] = items
-            print "receiving page %d, length %d" % (page, len(r.text.encode('utf8')))
-        time.sleep(1)
+            print "receiving page %d, length %d" \
+                  % (page, len(r.text.encode('utf8')))
+        time.sleep(.1)
         page += 1
     with open('github.json', 'wb') as f:
         json.dump(txts, f)
@@ -41,10 +49,16 @@ if step2:
     if not os.path.isdir("github_vimrcs"):
         os.makedirs("github_vimrcs")
     for i in github_data:
-        r = requests.get('https://raw.githubusercontent.com/'+i['full_name']+'/master/.vimrc')
+        r = requests.get(content_url+i['full_name']+'/master/.vimrc')
         if r.status_code == 200:
-            with open('github_vimrcs/'+ i['full_name'].replace('/',''),'wb') as f:
+            with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
                 f.write(r.text.encode('utf8'))
+        else:
+            r2. requests.get(content_url+i['full_name']+'/master/vimrc')
+            if r2.status_code == 200:
+                with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
+                    f.write(r2.text.encode('utf8'))
+
         counter += 1
         print "%.2f%%" % (counter*1./len(github_data)*100)
 
@@ -52,14 +66,19 @@ if step2:
 if step3:
     vimrcs = []
     total_vimrc = 0
-    excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else', 'endif', 'return', 'augroup', 'Bundle', 'execute', '\\ }', '\\']
+    excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else',
+                         'endif', 'return', 'augroup', 'Bundle', 'execute',
+                         '\\ }', '\\']
 
     for vimrc in os.listdir('github_vimrcs'):
-        total_vimrc += 1
         txt = open('github_vimrcs/'+vimrc, 'r').read().split('\n')
+        if len(txt) < 10:
+            continue
+        total_vimrc += 1
         sanitized_txt = []
         for line in txt:
-            if (not line.startswith('\"')) and not any(s in line for s in excluded_keywords):
+            if (not line.startswith('\"')) and \
+               not any(s in line for s in excluded_keywords):
                 # strip comments
                 sanitized_txt.append(re.sub('\".*$', '', line))
                 # strip trailing whitespaces
@@ -87,7 +106,7 @@ if step4:
         os.makedirs("plugin")
     with open('plugin/eigenvimrc.vim', 'wb') as f:
         for i in eigenvimrc:
-            if i[1]*1./total_vimrc >= .5:
+            if i[1]*100./total_vimrc >= 50:  # 50% most used
                 f.write(i[0]+'\n')
 
 # step 5: generate plot for analysis
@@ -97,4 +116,5 @@ if step5:
         exit()
     import pylab
     pylab.plot([i[1] for i in eigenvimrc])
+    pylab.ylabel("Number of usage")
     pylab.savefig('fig.png')
