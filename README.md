@@ -17,108 +17,107 @@ The "voting" process may iterate as follows:
 4. Make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
 
 #Result
-Most common vim config out of 411 vimrc's
-
-0. syntax on, 70.80%
-1. set nocompatible, 70.32%
-2. set expandtab, 61.80%
-3. set incsearch, 57.91%
-4. set number, 57.91%
-5. filetype plugin indent on, 57.42%
-6. set hlsearch, 55.72%
-7. set shiftwidth=4, 49.88%
-8. set autoindent, 49.39%
-9. set tabstop=4, 48.42%
-10. set ignorecase, 47.93%
-11. set ruler, 47.69%
-12. set laststatus=2, 46.23%
-13. set showmatch, 37.47%
-14. filetype off, 34.06%
-15. set smartcase, 33.82%
-16. filetype plugin on, 33.33%
-17. set showcmd, 32.60%
-18. set wildmenu, 31.39%
-19. set t_Co=256, 29.68%
-20. set nobackup, 29.44%
-21. set smarttab, 28.95%
-22. set softtabstop=4, 28.47%
-23. set backspace=indent,eol,start, 27.74%
-24. set encoding=utf-8, 27.25%
-25. set background=dark, 27.01%
-26. set smartindent, 26.03%
-27. set hidden, 23.60%
-28. set mouse=a, 22.38%
-29. set shiftwidth=2, 21.65%
-30. set cursorline, 21.41%
-31. filetype indent on, 21.17%
-32. set rtp+=~/.vim/bundle/vundle/, 21.17%
-33. set noswapfile, 21.17%
-34. syntax enable, 20.44%
-35. exe, 20.19%
-36. filetype on, 18.98%
-37. autocmd!, 18.98%
-38. set tabstop=2, 18.49%
-39. exec, 18.49%
-40. set wrap, 17.76%
-41. set nowrap, 17.76%
-42. set nu, 15.82%
-43. set guioptions-=T, 15.57%
-44. set autoread, 15.33%
-45. set showmode, 14.36%
-46. set noerrorbells, 14.36%
-47. set list, 14.36%
-48. au!, 14.36%
-49. let mapleader =, 13.87%
-50. set softtabstop=2, 12.65%
-51. colorscheme desert, 11.92%
-52. echo, 11.68%
-53. set cindent, 11.19%
-54. endfor, 11.19%
-55. set novisualbell, 10.71%
-56. echon, 10.46%
-57. set visualbell, 10.46%
-58. autocmd BufReadPost *, 10.22%
-59. set undofile, 10.22%
-60. let mapleader=, 10.22%
-61. set shiftround, 10.22%
-62. set cmdheight=2, 9.98%
-63. set scrolloff=3, 9.98%
-64. endf, 9.73%
-65. set ai, 9.49%
-66. set title, 9.49%
-67. try, 9.25%
-68. set backspace=2, 9.25%
-69. endtry, 9.25%
-70. set history=1000, 9.00%
-71. endwhile, 8.76%
-72. let rules += [, 8.76%
-73. set magic, 8.27%
-74. set foldenable, 8.27%
-75. set lazyredraw, 8.27%
-76. set termencoding=utf-8, 8.27%
-77. set foldmethod=indent, 8.03%
-78. set t_vb=, 8.03%
-79. colorscheme solarized, 8.03%
-80. set backup, 7.79%
-81. set autochdir, 7.79%
-82. catch, 7.79%
-83. set nowb, 7.54%
-84. set lbr, 7.54%
-85. set wildmode=list:longest, 7.54%
-86. set ttyfast, 7.54%
-87. set linebreak, 7.54%
-88. set clipboard=unnamed, 7.30%
-89. let g:neocomplcache_enable_at_startup = 1, 6.81%
-90. set si, 6.81%
-91. map <C-h> <C-W>h, 6.57%
-92. set encoding=utf8, 6.57%
-93. map <C-k> <C-W>k, 6.57%
-94. map <C-l> <C-W>l, 6.57%
-95. map <C-j> <C-W>j, 6.57%
-96. nnoremap ; :, 6.33%
-97. nnoremap k gk, 6.33%
-98. nnoremap j gj, 6.33%
-99. set guioptions-=m, 6.33%
+Most common vim config out of 710 vimrc's
+0. set nocompatible, 77.18%
+1. syntax on, 75.77%
+2. set expandtab, 64.37%
+3. filetype plugin indent on, 61.27%
+4. set incsearch, 60.99%
+5. set hlsearch, 59.86%
+6. set number, 59.72%
+7. set autoindent, 53.38%
+8. set laststatus=2, 52.39%
+9. set ignorecase, 51.97%
+10. set ruler, 51.13%
+11. set shiftwidth=4, 49.86%
+12. set tabstop=4, 47.46%
+13. set showmatch, 41.13%
+14. filetype off, 38.87%
+15. set showcmd, 38.17%
+16. set wildmenu, 37.18%
+17. set smartcase, 36.76%
+18. set backspace=indent,eol,start, 35.21%
+19. set encoding=utf-8, 34.93%
+20. set background=dark, 34.93%
+21. filetype plugin on, 34.37%
+22. set t_Co=256, 34.08%
+23. set nobackup, 31.97%
+24. set smarttab, 29.58%
+25. set softtabstop=4, 28.73%
+26. set hidden, 27.89%
+27. set cursorline, 27.32%
+28. set smartindent, 26.90%
+29. set mouse=a, 25.35%
+30. filetype indent on, 24.37%
+31. set noswapfile, 22.11%
+32. set shiftwidth=2, 21.97%
+33. set nowrap, 21.13%
+34. syntax enable, 20.85%
+35. set rtp+=~/.vim/bundle/vundle/, 20.85%
+36. exec, 20.42%
+37. set tabstop=2, 19.44%
+38. set autoread, 19.30%
+39. set showmode, 19.30%
+40. filetype on, 19.30%
+41. exe, 18.59%
+42. au!, 18.31%
+43. let mapleader =, 17.32%
+44. autocmd!, 17.32%
+45. set wrap, 17.04%
+46. set guioptions-=T, 17.04%
+47. set noerrorbells, 16.62%
+48. set nu, 15.63%
+49. set list, 15.35%
+50. let mapleader=, 13.80%
+51. set softtabstop=2, 13.80%
+52. set title, 13.80%
+53. colorscheme solarized, 13.24%
+54. set undofile, 13.24%
+55. autocmd BufReadPost *, 12.68%
+56. set novisualbell, 12.25%
+57. endf, 11.97%
+58. set history=1000, 11.69%
+59. echo, 11.55%
+60. set scrolloff=3, 11.27%
+61. endfun, 10.99%
+62. set shiftround, 10.85%
+63. set cmdheight=2, 10.70%
+64. endfor, 10.56%
+65. set visualbell, 10.56%
+66. set cindent, 10.56%
+67. set termencoding=utf-8, 10.42%
+68. set backspace=2, 10.14%
+69. colorscheme desert, 9.72%
+70. set wildmode=list:longest, 9.58%
+71. set ttyfast, 9.44%
+72. set linebreak, 9.44%
+73. set fileencoding=utf-8, 9.01%
+74. set t_vb=, 8.87%
+75. try, 8.87%
+76. endtry, 8.87%
+77. set foldmethod=indent, 8.73%
+78. set ai, 8.59%
+79. set clipboard=unnamed, 8.31%
+80. set foldenable, 8.31%
+81. set magic, 8.03%
+82. set backup, 7.89%
+83. set lazyredraw, 7.89%
+84. endwhile, 7.89%
+85. catch, 7.46%
+86. set guioptions-=m, 7.32%
+87. set undolevels=1000, 7.18%
+88. set autochdir, 7.18%
+89. nnoremap ; :, 7.04%
+90. set gdefault, 6.90%
+91. end, 6.90%
+92. set history=50, 6.90%
+93. set modeline, 6.90%
+94. set nowb, 6.90%
+95. set encoding=utf8, 6.76%
+96. nnoremap j gj, 6.76%
+97. nnoremap k gk, 6.76%
+98. set nowritebackup, 6.62%
+99. set lbr, 6.48%
 
 #Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.

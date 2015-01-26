@@ -6,7 +6,7 @@ import collections
 import time
 
 # requires internet connection
-step1 = 1
+step1 = 0
 step2 = 1  # most time intensive
 
 # doesn't require internet connection
@@ -23,7 +23,7 @@ if step1:
     page = 1
 
     txts = json.loads("{}")
-    while page < 2000:
+    while page < 33:
         r = requests.get('%s?q=vimrc&L=VimL&page=%d&access_token=%s'
                          % (api_url, page,
                             '33245750450464986df3c83a4e65de625d8f1f90'))
@@ -34,7 +34,7 @@ if step1:
             else:
                 txts['items'] = items
             print "receiving page %d, length %d" \
-                  % (page, len(r.text.encode('utf8')))
+                  % (page, len(items))
         time.sleep(.1)
         page += 1
     with open('github.json', 'wb') as f:
@@ -54,7 +54,7 @@ if step2:
             with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
                 f.write(r.text.encode('utf8'))
         else:
-            r2. requests.get(content_url+i['full_name']+'/master/vimrc')
+            r2 = requests.get(content_url+i['full_name']+'/master/vimrc')
             if r2.status_code == 200:
                 with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
                     f.write(r2.text.encode('utf8'))
