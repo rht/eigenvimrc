@@ -24,9 +24,8 @@ if step1:
 
     txts = json.loads("{}")
     while page < 33:
-        r = requests.get('%s?q=vimrc&L=VimL&page=%d&access_token=%s'
-                         % (api_url, page,
-                            '33245750450464986df3c83a4e65de625d8f1f90'))
+        r = requests.get('%s?q=vimrc&L=VimL&page=%d'
+                         % (api_url, page))
         if r.status_code == 200:
             items = json.loads(r.text.encode('utf8'))['items']
             if txts:
@@ -91,10 +90,10 @@ if step3:
     # flatten the nested list
     vimrcs = [item for sublist in vimrcs for item in sublist]
 
-    print "Most common vim config out of " + str(total_vimrc) + " vimrc's"
+    print "Most common vim config out of " + str(total_vimrc) + " vimrc's\n"
     eigenvimrc = collections.Counter(vimrcs).most_common(100)
     for n, i in enumerate(eigenvimrc):
-        print "%d. %s, %.2f%%" % (n, i[0], i[1]*100./total_vimrc)
+        print "%d. ```%s``` %.2f%%" % (n, i[0], i[1]*100./total_vimrc)
 
 # step 4: generate eigenvimrc.vim
 if step4:
