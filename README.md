@@ -20,10 +20,10 @@ The "voting" process may iterate as follows:
 Most common vim config out of 710 vimrc's
 
 0. ```syntax on``` 64.51%
-1. ```set nocompatible``` 50.56%
-2. ```set expandtab``` 50.00%
-3. ```filetype plugin indent on``` 44.37%
-4. ```set number``` 43.10%
+1. ```set number``` 55.92%
+2. ```set nocompatible``` 50.56%
+3. ```set expandtab``` 50.00%
+4. ```filetype plugin indent on``` 44.37%
 5. ```set autoindent``` 41.55%
 6. ```set shiftwidth=4``` 40.28%
 7. ```set hlsearch``` 39.58%
@@ -61,64 +61,65 @@ Most common vim config out of 710 vimrc's
 39. ```let mapleader = ","``` 15.35%
 40. ```set nowrap``` 13.80%
 41. ```set autoread``` 12.96%
-42. ```set nu``` 12.82%
-43. ```set guioptions-=T``` 12.68%
-44. ```colorscheme solarized``` 12.68%
-45. ```autocmd BufReadPost *``` 12.68%
-46. ```set list``` 12.68%
-47. ```endf``` 11.97%
-48. ```set softtabstop=2``` 11.83%
-49. ```set noerrorbells``` 11.69%
-50. ```set wrap``` 11.41%
-51. ```""``` 11.13%
-52. ```set showmode``` 11.13%
-53. ```let mapleader=","``` 11.13%
-54. ```endfun``` 10.99%
-55. ```endfor``` 10.56%
-56. ```set undofile``` 10.42%
-57. ```set termencoding=utf-8``` 10.14%
-58. ```set novisualbell``` 9.01%
-59. ```try``` 8.87%
-60. ```endtry``` 8.87%
-61. ```filetype plugin indent on     ``` 8.87%
-62. ```set cindent``` 8.73%
-63. ```colorscheme desert``` 8.59%
-64. ```set nocompatible               ``` 8.59%
-65. ```set fileencoding=utf-8``` 8.45%
-66. ```set t_vb=``` 8.17%
-67. ```set title``` 7.89%
-68. ```endwhile``` 7.61%
-69. ```set scrolloff=3``` 7.46%
-70. ```catch``` 7.46%
-71. ```set wildmode=list:longest``` 7.32%
-72. ```filetype off                   ``` 7.32%
-73. ```nnoremap ; :``` 7.04%
-74. ```end``` 6.90%
-75. ```set history=1000``` 6.90%
-76. ```nnoremap j gj``` 6.76%
-77. ```set backspace=2``` 6.76%
-78. ```nnoremap k gk``` 6.76%
-79. ```set cmdheight=2``` 6.62%
-80. ```set nowb``` 6.62%
-81. ```set encoding=utf8``` 6.48%
-82. ```set visualbell``` 6.48%
-83. ```set linebreak``` 6.34%
-84. ```set lbr``` 6.34%
-85. ```set ttyfast``` 6.20%
-86. ```autocmd FileType css set omnifunc=csscomplete#CompleteCSS``` 6.20%
-87. ```set tm=500``` 6.20%
-88. ```set foldmethod=indent``` 6.06%
-89. ```set backspace=eol,start,indent``` 6.06%
-90. ```colorscheme molokai``` 5.92%
-91. ```set modeline``` 5.92%
-92. ```let g:neocomplcache_enable_at_startup = 1``` 5.77%
-93. ```set shiftround``` 5.77%
-94. ```set clipboard=unnamed``` 5.63%
-95. ```vnoremap < <gv``` 5.49%
-96. ```map <C-l> <C-W>l``` 5.49%
-97. ```map <C-h> <C-W>h``` 5.49%
-98. ```vnoremap > >gv``` 5.49%
-99. ```map <C-j> <C-W>j``` 5.35%
+42. ```set guioptions-=T``` 12.68%
+43. ```colorscheme solarized``` 12.68%
+44. ```autocmd BufReadPost *``` 12.68%
+45. ```set list``` 12.68%
+46. ```set softtabstop=2``` 11.83%
+47. ```set noerrorbells``` 11.69%
+48. ```set wrap``` 11.41%
+49. ```""``` 11.13%
+50. ```set showmode``` 11.13%
+51. ```let mapleader=","``` 11.13%
+52. ```set undofile``` 10.42%
+53. ```set termencoding=utf-8``` 10.14%
+54. ```set novisualbell``` 9.01%
+55. ```try``` 8.87%
+56. ```endtry``` 8.87%
+57. ```filetype plugin indent on     ``` 8.87%
+58. ```set cindent``` 8.73%
+59. ```colorscheme desert``` 8.59%
+60. ```set nocompatible               ``` 8.59%
+61. ```set fileencoding=utf-8``` 8.45%
+62. ```set t_vb=``` 8.17%
+63. ```set title``` 7.89%
+64. ```endwhile``` 7.61%
+65. ```set scrolloff=3``` 7.46%
+66. ```catch``` 7.46%
+67. ```set wildmode=list:longest``` 7.32%
+68. ```filetype off                   ``` 7.32%
+69. ```nnoremap ; :``` 7.04%
+70. ```end``` 6.90%
+71. ```set history=1000``` 6.90%
+72. ```nnoremap j gj``` 6.76%
+73. ```set backspace=2``` 6.76%
+74. ```nnoremap k gk``` 6.76%
+75. ```set cmdheight=2``` 6.62%
+76. ```set nowb``` 6.62%
+77. ```set encoding=utf8``` 6.48%
+78. ```set visualbell``` 6.48%
+79. ```set linebreak``` 6.34%
+80. ```set lbr``` 6.34%
+81. ```set ttyfast``` 6.20%
+82. ```autocmd FileType css set omnifunc=csscomplete#CompleteCSS``` 6.20%
+83. ```set tm=500``` 6.20%
+84. ```set foldmethod=indent``` 6.06%
+85. ```set backspace=eol,start,indent``` 6.06%
+86. ```colorscheme molokai``` 5.92%
+87. ```set modeline``` 5.92%
+88. ```let g:neocomplcache_enable_at_startup = 1``` 5.77%
+89. ```set shiftround``` 5.77%
+90. ```set clipboard=unnamed``` 5.63%
+91. ```vnoremap < <gv``` 5.49%
+92. ```map <C-l> <C-W>l``` 5.49%
+93. ```map <C-h> <C-W>h``` 5.49%
+94. ```vnoremap > >gv``` 5.49%
+95. ```set relativenumber``` 5.35%
+96. ```map <C-j> <C-W>j``` 5.35%
+97. ```autocmd FileType python setlocal omnifunc=pythoncomplete#Complete``` 5.35%
+98. ```set magic``` 5.35%
+99. ```map <C-k> <C-W>k``` 5.35%
+
 
 #Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.
