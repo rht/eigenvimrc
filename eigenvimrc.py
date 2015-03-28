@@ -69,7 +69,8 @@ if step3:
     total_vimrc = 0
     excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else',
                          'endif', 'return', 'augroup', 'Bundle', 'execute',
-                         '\\ }', '\\', 'endfun', 'endf']
+                         '\\ }', '\\', 'endfun', 'endf', 'try', 'endtry',
+                         'endwhile', 'catch', 'end', 'au!']
 
     for vimrc in os.listdir('github_vimrcs'):
         txt = open('github_vimrcs/'+vimrc, 'r').read().split('\n')
