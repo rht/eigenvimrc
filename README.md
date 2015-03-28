@@ -25,9 +25,9 @@ Most common vim config out of 710 vimrc's
 3. ```set expandtab``` 50.00%
 4. ```filetype plugin indent on``` 44.37%
 5. ```set autoindent``` 41.55%
-6. ```set shiftwidth=4``` 40.28%
-7. ```set hlsearch``` 39.58%
-8. ```set tabstop=4``` 38.45%
+6. ```set tabstop=4``` 40.85%
+7. ```set shiftwidth=4``` 40.28%
+8. ```set hlsearch``` 39.58%
 9. ```set laststatus=2``` 37.89%
 10. ```set incsearch``` 37.61%
 11. ```set ignorecase``` 34.08%
@@ -40,8 +40,8 @@ Most common vim config out of 710 vimrc's
 18. ```let mapleader=","``` 26.48%
 19. ```set backspace=indent,eol,start``` 25.63%
 20. ```set wildmenu``` 24.93%
-21. ```set showmatch``` 24.51%
-22. ```set softtabstop=4``` 23.94%
+21. ```set softtabstop=4``` 24.79%
+22. ```set showmatch``` 24.51%
 23. ```filetype off``` 23.66%
 24. ```set smartindent``` 22.82%
 25. ```set nobackup``` 22.11%
@@ -53,10 +53,10 @@ Most common vim config out of 710 vimrc's
 31. ```set noswapfile``` 19.01%
 32. ```set cursorline``` 18.45%
 33. ```set shiftwidth=2``` 18.31%
-34. ```set hidden``` 18.03%
-35. ```autocmd!``` 17.32%
-36. ```syntax enable``` 16.76%
-37. ```set tabstop=2``` 16.20%
+34. ```set tabstop=2``` 18.17%
+35. ```set hidden``` 18.03%
+36. ```autocmd!``` 17.32%
+37. ```syntax enable``` 16.76%
 38. ```filetype on``` 15.63%
 39. ```set nowrap``` 13.80%
 40. ```set autoread``` 12.96%
@@ -64,7 +64,7 @@ Most common vim config out of 710 vimrc's
 42. ```colorscheme solarized``` 12.68%
 43. ```autocmd BufReadPost *``` 12.68%
 44. ```set list``` 12.68%
-45. ```set softtabstop=2``` 11.83%
+45. ```set softtabstop=2``` 12.25%
 46. ```set noerrorbells``` 11.69%
 47. ```set wrap``` 11.41%
 48. ```set showmode``` 11.13%
@@ -74,8 +74,8 @@ Most common vim config out of 710 vimrc's
 52. ```set novisualbell``` 9.01%
 53. ```set cindent``` 8.73%
 54. ```filetype plugin indent on     ``` 8.73%
-55. ```colorscheme desert``` 8.59%
-56. ```set nocompatible               ``` 8.59%
+55. ```set nocompatible               ``` 8.59%
+56. ```colorscheme desert``` 8.59%
 57. ```set fileencoding=utf-8``` 8.45%
 58. ```set t_vb=``` 8.17%
 59. ```set title``` 7.89%
@@ -119,6 +119,7 @@ Most common vim config out of 710 vimrc's
 97. ```set autochdir``` 5.07%
 98. ```let rules += [``` 5.07%
 99. ```set guioptions-=r``` 4.93%
+
 
 #Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.

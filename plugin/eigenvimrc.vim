@@ -4,9 +4,9 @@ set nocompatible
 set expandtab
 filetype plugin indent on
 set autoindent
+set tabstop=4
 set shiftwidth=4
 set hlsearch
-set tabstop=4
 set laststatus=2
 set incsearch
 set ignorecase
