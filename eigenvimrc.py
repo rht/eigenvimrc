@@ -46,19 +46,22 @@ if step2:
     print "downloading vimrc's"
     github_data = json.load(open('github.json'))['items']
     counter = 0
+
+    def save_text(request):
+        with open('github_vimrcs/'+i['full_name'].replace('/', ''), 'wb') as f:
+            f.write(request.text.encode('utf8'))
+
     # essentially `mkdir -p github_vimrcs`
     if not os.path.isdir("github_vimrcs"):
         os.makedirs("github_vimrcs")
     for i in github_data:
         r = requests.get(content_url+i['full_name']+'/master/.vimrc')
         if r.status_code == 200:
-            with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
-                f.write(r.text.encode('utf8'))
+            save_text(r)
         else:
             r2 = requests.get(content_url+i['full_name']+'/master/vimrc')
             if r2.status_code == 200:
-                with open('github_vimrcs/' + i['full_name'].replace('/', ''), 'wb') as f:
-                    f.write(r2.text.encode('utf8'))
+                save_text(r2)
 
         counter += 1
         print "%.2f%%" % (counter*1./len(github_data)*100)
