@@ -6,13 +6,20 @@ This script scrapes vimrc's hosted in github and returns the most commonly used 
 
 The "voting" process may iterate as follows:
 
-1. People curate their vimrc's.
-2. 50% of the most commonly used settings gets assimilated into default.
-3. goto #1
+```
+def vote(default):
+    vimrcs = people_curate_their_vimrc()
+    sleep(a_month)
+    new_default = most_common_50_percent(vimrcs)
+    if new_default != default:
+        return vote(new_default)
+    else:
+        return new_default
+```
 
 #Install
-1. Go to ```~/.vim/bundle```
-2. Clone this repo
+1. ```cd ~/.vim/bundle```
+2. ```git clone git://github.com/tpope/vim-fugitive.git```
 3. Make sure pathogen is available
 4. Make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
 
