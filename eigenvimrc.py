@@ -7,7 +7,7 @@ import time
 
 # requires internet connection
 step1 = 0
-step2 = 1  # most time intensive
+step2 = 0  # most time intensive
 
 # doesn't require internet connection
 step3 = 1
@@ -78,13 +78,16 @@ if step3:
         for line in txt:
             if (not line.startswith('\"')) and \
                not any(s in line for s in excluded_keywords):
-                # strip comments
-                sanitized_txt.append(re.sub('\".*$', '', line))
                 # strip trailing whitespaces
-                sanitized_txt[-1] = sanitized_txt[-1].strip()
-                # strip empty lines
-                if len(sanitized_txt[-1]) == 0:
-                    sanitized_txt.pop()
+                sanitized_line = line.strip()
+                # strip comment
+                # detection is done by checking if the number of quotes
+                # are odd
+                if line.count('"') % 2 != 0:
+                    sanitized_line = sanitized_line[:sanitized_line.rfind('"')]
+                # only append when line is not empty
+                if len(sanitized_line) > 0:
+                    sanitized_txt.append(sanitized_line)
         vimrcs.append(sanitized_txt)
 
     # flatten the nested list
@@ -105,7 +108,7 @@ if step4:
         os.makedirs("plugin")
     with open('plugin/eigenvimrc.vim', 'wb') as f:
         for i in eigenvimrc:
-            if i[1]*100./total_vimrc >= 50:  # 50% most used
+            if i[1]*100./total_vimrc >= 30:  # 30% most used
                 f.write(i[0]+'\n')
 
 # step 5: generate plot for analysis
