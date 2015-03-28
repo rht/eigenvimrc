@@ -5,6 +5,8 @@ import re
 import collections
 import time
 
+import util
+
 # requires internet connection
 step1 = 0
 step2 = 0  # most time intensive
@@ -80,6 +82,8 @@ if step3:
                not any(s in line for s in excluded_keywords):
                 # strip trailing whitespaces
                 sanitized_line = line.strip()
+                # format short-hand keyword
+                sanitized_line = util.keyword_reformat(sanitized_line)
                 # strip comment
                 # detection is done by checking if the number of quotes
                 # are odd

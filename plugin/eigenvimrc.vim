@@ -1,8 +1,8 @@
 syntax on
+set number
 set nocompatible
 set expandtab
 filetype plugin indent on
-set number
 set autoindent
 set shiftwidth=4
 set hlsearch
