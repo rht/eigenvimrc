@@ -85,6 +85,8 @@ if step3:
                 sanitized_line = line.strip()
                 # format short-hand keyword
                 sanitized_line = util.keyword_reformat(sanitized_line)
+                # strip whitespace surrounding '=' operator
+                sanitized_line = sanitized_line.replace(" = ", "=")
                 # strip comment
                 # detection is done by checking if the number of quotes
                 # are odd
