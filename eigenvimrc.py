@@ -160,7 +160,7 @@ if step5:
     print covar
 
     pylab.plot(x, powerlaw(x, amp, index))
-    pylab.legend(['data', 'power law fit'])
+    pylab.legend(['power law fit', 'data'])
     pylab.xlim([1, x[-1]])
 
     pylab.savefig('fig.png')
