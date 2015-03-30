@@ -1,4 +1,4 @@
-TODO: use ghtorrent
+TODO2: create phylogenetic tree of vimrcs
 
 This script scrapes vimrc's hosted in github and returns the most commonly used vim configurations.
 
@@ -6,7 +6,7 @@ This script scrapes vimrc's hosted in github and returns the most commonly used 
 
 The "voting" process may iterate as follows:
 
-```
+```python
 def vote(default):
     vimrcs = people_curate_their_vimrc()
     sleep(a_month)
@@ -18,116 +18,121 @@ def vote(default):
 ```
 
 #Install
-1. ```cd ~/.vim/bundle```
-2. ```git clone git://github.com/tpope/vim-fugitive.git```
-3. Make sure pathogen is available
-4. Make sure ```execute pathogen#infect()``` is in ```~/.vimrc```
+3. Make sure pathogen is available and ```execute pathogen#infect()``` is in ```~/.vimrc```
+2. ```cd ~/.vim/bundle```
+3. ```git clone git://github.com/tpope/vim-fugitive.git```
 
 #Result
-Most common vim config out of 710 vimrc's
+```syntax on``` > ```set no compatible```
 
-0. ```syntax on``` 64.51%
-1. ```set number``` 55.92%
-2. ```set nocompatible``` 50.56%
-3. ```set expandtab``` 50.00%
-4. ```filetype plugin indent on``` 44.37%
-5. ```set autoindent``` 41.55%
-6. ```set tabstop=4``` 40.85%
-7. ```set shiftwidth=4``` 40.28%
-8. ```set hlsearch``` 39.58%
-9. ```set laststatus=2``` 37.89%
-10. ```set incsearch``` 37.61%
-11. ```set ignorecase``` 34.08%
-12. ```set encoding=utf-8``` 31.41%
-13. ```set background=dark``` 30.99%
-14. ```set ruler``` 30.28%
-15. ```filetype plugin on``` 29.58%
-16. ```set smartcase``` 29.30%
-17. ```set t_Co=256``` 27.61%
-18. ```let mapleader=","``` 26.48%
-19. ```set backspace=indent,eol,start``` 25.63%
-20. ```set wildmenu``` 24.93%
-21. ```set softtabstop=4``` 24.79%
-22. ```set showmatch``` 24.51%
-23. ```filetype off``` 23.66%
-24. ```set smartindent``` 22.82%
-25. ```set nobackup``` 22.11%
-26. ```set smarttab``` 21.69%
-27. ```set showcmd``` 21.55%
-28. ```set rtp+=~/.vim/bundle/vundle/``` 20.85%
-29. ```filetype indent on``` 20.14%
-30. ```set mouse=a``` 19.58%
-31. ```set noswapfile``` 19.01%
-32. ```set cursorline``` 18.45%
-33. ```set shiftwidth=2``` 18.31%
-34. ```set tabstop=2``` 18.17%
-35. ```set hidden``` 18.03%
-36. ```autocmd!``` 17.32%
-37. ```syntax enable``` 16.76%
-38. ```filetype on``` 15.63%
-39. ```set nowrap``` 13.80%
-40. ```set autoread``` 12.96%
-41. ```set guioptions-=T``` 12.68%
-42. ```colorscheme solarized``` 12.68%
-43. ```autocmd BufReadPost *``` 12.68%
-44. ```set list``` 12.68%
-45. ```set softtabstop=2``` 12.25%
-46. ```set noerrorbells``` 11.69%
-47. ```set wrap``` 11.41%
-48. ```set showmode``` 11.13%
-49. ```""``` 10.99%
-50. ```set undofile``` 10.42%
-51. ```set termencoding=utf-8``` 10.14%
-52. ```set novisualbell``` 9.01%
-53. ```set cindent``` 8.73%
-54. ```filetype plugin indent on     ``` 8.73%
-55. ```set nocompatible               ``` 8.59%
-56. ```colorscheme desert``` 8.59%
-57. ```set fileencoding=utf-8``` 8.45%
-58. ```set t_vb=``` 8.17%
-59. ```set title``` 7.89%
-60. ```let g:mapleader=","``` 7.61%
-61. ```set scrolloff=3``` 7.46%
-62. ```set wildmode=list:longest``` 7.32%
-63. ```filetype off                   ``` 7.32%
-64. ```nnoremap ; :``` 7.04%
-65. ```set history=1000``` 6.90%
-66. ```let g:neocomplcache_enable_at_startup=1``` 6.90%
-67. ```nnoremap j gj``` 6.76%
-68. ```set backspace=2``` 6.76%
-69. ```nnoremap k gk``` 6.76%
-70. ```set cmdheight=2``` 6.62%
-71. ```set nowb``` 6.62%
-72. ```set encoding=utf8``` 6.48%
-73. ```set visualbell``` 6.48%
-74. ```set linebreak``` 6.34%
-75. ```let Tlist_Use_Right_Window=1``` 6.34%
-76. ```set lbr``` 6.34%
-77. ```set ttyfast``` 6.20%
-78. ```autocmd FileType css set omnifunc=csscomplete#CompleteCSS``` 6.20%
-79. ```set tm=500``` 6.20%
-80. ```set foldmethod=indent``` 6.06%
-81. ```set backspace=eol,start,indent``` 6.06%
-82. ```colorscheme molokai``` 5.92%
-83. ```set modeline``` 5.92%
-84. ```set shiftround``` 5.77%
-85. ```set clipboard=unnamed``` 5.63%
-86. ```vnoremap < <gv``` 5.49%
-87. ```map <C-l> <C-W>l``` 5.49%
-88. ```map <C-h> <C-W>h``` 5.49%
-89. ```vnoremap > >gv``` 5.49%
-90. ```set relativenumber``` 5.35%
-91. ```map <C-j> <C-W>j``` 5.35%
-92. ```autocmd FileType python setlocal omnifunc=pythoncomplete#Complete``` 5.35%
-93. ```set magic``` 5.35%
-94. ```map <C-k> <C-W>k``` 5.35%
-95. ```set whichwrap+=<,>,h,l``` 5.21%
-96. ```set nowritebackup``` 5.07%
-97. ```set autochdir``` 5.07%
-98. ```let rules += [``` 5.07%
-99. ```set guioptions-=r``` 4.93%
+Most common vim config out of 11804 vimrc's
+
+0. ```syntax on``` 70.70%
+1. ```set number``` 59.72%
+2. ```set nocompatible``` 59.18%
+3. ```filetype plugin indent on``` 53.67%
+4. ```set expandtab``` 52.71%
+5. ```set hlsearch``` 47.80%
+6. ```set laststatus=2``` 47.41%
+7. ```set incsearch``` 40.30%
+8. ```set ignorecase``` 39.67%
+9. ```set backspace=indent,eol,start``` 38.71%
+10. ```let mapleader=","``` 38.09%
+11. ```set background=dark``` 37.10%
+12. ```set ruler``` 34.95%
+13. ```set tabstop=2``` 34.45%
+14. ```set autoindent``` 33.54%
+15. ```set wildmenu``` 31.93%
+16. ```set smartcase``` 29.55%
+17. ```set t_Co=256``` 29.41%
+18. ```set showcmd``` 28.66%
+19. ```set shiftwidth=2``` 28.05%
+20. ```set cursorline``` 26.75%
+21. ```set tabstop=4``` 26.63%
+22. ```set shiftwidth=4``` 26.62%
+23. ```autocmd!``` 26.45%
+24. ```set nobackup``` 26.35%
+25. ```set mouse=a``` 25.49%
+26. ```filetype off``` 25.45%
+27. ```set encoding=utf-8``` 24.22%
+28. ```set list``` 23.86%
+29. ```set showmatch``` 21.64%
+30. ```syntax enable``` 19.83%
+31. ```set hidden``` 19.69%
+32. ```set noswapfile``` 19.42%
+33. ```autocmd BufReadPost *``` 19.18%
+34. ```set title``` 18.51%
+35. ```filetype plugin on``` 18.41%
+36. ```set smartindent``` 18.38%
+37. ```set showmode``` 18.24%
+38. ```filetype on``` 18.08%
+39. ```colorscheme solarized``` 17.97%
+40. ```set smarttab``` 17.24%
+41. ```set relativenumber``` 16.70%
+42. ```set ttyfast``` 16.37%
+43. ```set noerrorbells``` 16.09%
+44. ```set softtabstop=4``` 15.85%
+45. ```set nowrap``` 15.57%
+46. ```set scrolloff=3``` 15.49%
+47. ```set clipboard=unnamed``` 15.33%
+48. ```set softtabstop=2``` 13.61%
+49. ```set nowritebackup``` 13.50%
+50. ```filetype indent on``` 13.39%
+51. ```set undodir=~/.vim/undo``` 13.20%
+52. ```set gdefault``` 12.87%
+53. ```set rtp+=~/.vim/bundle/vundle/``` 12.56%
+54. ```let save_cursor=getpos(".")``` 12.29%
+55. ```set backupdir=~/.vim/backups``` 12.28%
+56. ```set modeline``` 12.02%
+57. ```let old_query=getreg('/')``` 12.00%
+58. ```set directory=~/.vim/swaps``` 12.00%
+59. ```set nostartofline``` 11.36%
+60. ```set autoread``` 11.18%
+61. ```set splitright``` 10.33%
+62. ```set undofile``` 10.08%
+63. ```set shortmess=atI``` 10.01%
+64. ```set splitbelow``` 9.81%
+65. ```set binary``` 9.34%
+66. ```set noeol``` 9.32%
+67. ```set encoding=utf-8 nobomb``` 9.24%
+68. ```set esckeys``` 9.16%
+69. ```set rtp+=~/.vim/bundle/Vundle.vim``` 9.00%
+70. ```nnoremap k gk``` 8.81%
+71. ```nnoremap j gj``` 8.79%
+72. ```function! StripWhitespace()``` 8.66%
+73. ```autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript``` 8.61%
+74. ```set wrap``` 8.60%
+75. ```set numberwidth=5``` 8.54%
+76. ```set wildmode=list:longest,list:full``` 8.53%
+77. ```noremap <leader>W :w !sudo tee % > /dev/null<CR>``` 8.52%
+78. ```au BufReadPost * set relativenumber``` 8.20%
+79. ```set exrc``` 7.88%
+80. ```let g:airline_powerline_fonts=1``` 7.87%
+81. ```set secure``` 7.84%
+82. ```set visualbell``` 7.65%
+83. ```colorscheme molokai``` 7.63%
+84. ```Plugin 'gmarik/Vundle.vim'``` 7.45%
+85. ```nnoremap Y y$``` 7.05%
+86. ```set modelines=4``` 7.00%
+87. ```set guioptions-=T``` 6.90%
+88. ```set laststatus=2 ``` 6.85%
+89. ```let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"``` 6.79%
+90. ```set shiftround``` 6.68%
+91. ```set history=1000``` 6.51%
+92. ```set ignorecase ``` 6.51%
+93. ```let g:Powerline_symbols='fancy'``` 6.49%
+94. ```autocmd FileType text setlocal textwidth=78``` 6.45%
+95. ```set lazyredraw``` 6.25%
+96. ```set wildmode=list:longest``` 6.18%
+97. ```nnoremap <C-h> <C-w>h``` 6.10%
+98. ```nnoremap <C-l> <C-w>l``` 6.07%
+99. ```nnoremap <C-k> <C-w>k``` 6.06%
 
 
 #Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.
 ![plot](fig.png)
+
+#Data
+Repository list is queried from [ghtorrent.org/dblite/](ghtorrent.org/dblite/)
+```select * from projects where language = 'VimL' and name = 'dotfiles'```

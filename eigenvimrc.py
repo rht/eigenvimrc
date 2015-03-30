@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-import re
 import collections
 import time
 
@@ -9,15 +8,14 @@ import util
 
 # requires internet connection
 step1 = 0
-step2 = 0  # most time intensive
+step2 = 0  # 2  # most time intensive, 2 for ghtorrent.csv, 1 for github.json
 
 # doesn't require internet connection
-step3 = 1
-step4 = 1
-step5 = 1
+step3 = step4 = step5 = 1
 
-api_url = 'https://api.github.com/search/repositories'
-content_url = 'https://raw.githubusercontent.com/'
+api_url = "https://api.github.com/search/repositories"
+content_url = "https://raw.githubusercontent.com/"
+tic = time.time()
 
 # step 1: collect links to vimrc's
 if step1:
@@ -44,27 +42,40 @@ if step1:
 # step 2: scrape vimrc's
 if step2:
     print "downloading vimrc's"
-    github_data = json.load(open('github.json'))['items']
+    if step2 is 1:
+        data = json.load(open("github.json"))["items"]
+    elif step2 is 2:
+        data = []
+        import csv
+        with open("ghtorrent.csv") as csvfile:
+            reader = csv.reader(csvfile, delimiter=',')
+            next(reader, None)  # skip the header
+            for row in reader:
+                repo_name = row[0].replace("https://api.github.com/repos/", "")
+                data.append({"full_name": repo_name})
     counter = 0
+    offset = 17578
 
-    def save_text(request):
-        with open('github_vimrcs/'+i['full_name'].replace('/', ''), 'wb') as f:
+    def save_text(repo, request):
+        with open('github_vimrcs/'+repo['full_name'].replace('/', ''), 'wb') \
+                as f:
             f.write(request.text.encode('utf8'))
 
     # essentially `mkdir -p github_vimrcs`
     if not os.path.isdir("github_vimrcs"):
         os.makedirs("github_vimrcs")
-    for i in github_data:
-        r = requests.get(content_url+i['full_name']+'/master/.vimrc')
-        if r.status_code == 200:
-            save_text(r)
-        else:
-            r2 = requests.get(content_url+i['full_name']+'/master/vimrc')
-            if r2.status_code == 200:
-                save_text(r2)
+    for i in data:
+        if counter > offset:
+            r = requests.get(content_url+i['full_name']+'/master/.vimrc')
+            if r.status_code == 200:
+                save_text(i, r)
+            else:
+                r2 = requests.get(content_url+i['full_name']+'/master/vimrc')
+                if r2.status_code == 200:
+                    save_text(i, r2)
 
         counter += 1
-        print "%.2f%%" % (counter*1./len(github_data)*100)
+        print "%d %.2f%%" % (counter, counter*1./len(data)*100)
 
 # step 3: process data
 if step3:
@@ -127,6 +138,31 @@ if step5:
         print "this step depends on step #3, please enable step3"
         exit()
     import pylab
-    pylab.plot([i[1] for i in eigenvimrc])
+    y = [i[1] for i in eigenvimrc]
+    x = range(1, len(y)+1)
+    pylab.scatter(x, y, c='r')
     pylab.ylabel("Number of usage")
+
+    # power law fit
+    import scipy.optimize as optimize
+    logx = pylab.log10(x)
+    logy = pylab.log10(y)
+    fitfunc = lambda p, x: p[0] + p[1] * x
+    errfunc = lambda p, x, y: (y - fitfunc(p, x)) ** 2
+    powerlaw = lambda x, amp, index: amp * (x**index)
+    pinit = [1.0, -1.0]
+    out = optimize.leastsq(errfunc, pinit,
+                           args=(logx, logy), full_output=1)
+    pfinal = out[0]
+    covar = out[1]
+    index = pfinal[1]
+    amp = 10.0**pfinal[0]
+    print covar
+
+    pylab.plot(x, powerlaw(x, amp, index))
+    pylab.legend(['data', 'power law fit'])
+    pylab.xlim([1, x[-1]])
+
     pylab.savefig('fig.png')
+
+print 'elapsed: ', time.time() - tic
