@@ -23,7 +23,7 @@ def vote(default):
 3. ```git clone git://github.com/tpope/vim-fugitive.git```
 
 #Result
-```syntax on``` > ```set no compatible```
+```syntax on``` > ```set nocompatible```
 
 Most common vim config out of 11804 vimrc's
 
@@ -135,4 +135,5 @@ Strangely it doesn't follow the power law distribution. Likely because some sett
 
 #Data
 Repository list is queried from [ghtorrent.org/dblite/](ghtorrent.org/dblite/)
+
 ```select * from projects where language = 'VimL' and name = 'dotfiles'```
