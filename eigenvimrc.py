@@ -54,7 +54,7 @@ if step2:
                 repo_name = row[0].replace("https://api.github.com/repos/", "")
                 data.append({"full_name": repo_name})
     counter = 0
-    offset = 17578
+    offset = 0
 
     def save_text(repo, request):
         with open('github_vimrcs/'+repo['full_name'].replace('/', ''), 'wb') \
