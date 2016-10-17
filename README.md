@@ -131,6 +131,28 @@ Most common vim config out of 13759 vimrc's
 98. ```vnoremap > >gv``` 7.17%
 99. ```set foldmethod=indent``` 7.07%
 
+#Colorscheme stat
+0. solarized 25.00%
+1. molokai 11.44%
+2. desert 6.19%
+3. badwolf 4.33%
+4. jellybeans 3.99%
+5. github 2.88%
+6. default 1.86%
+7. hybrid 1.84%
+8. vividchalk 1.72%
+9. railscasts 1.71%
+
+#Plugin manager stat
+
+vam: 0.34%
+vundle: 10.39%
+neobundle: 4.40%
+others or none: 69.96%
+dein: 0.00%
+pathogen: 14.91%
+
+
 #Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.
 ![plot](fig.png)
