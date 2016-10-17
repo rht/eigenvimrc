@@ -1,4 +1,6 @@
 TODO2: create phylogenetic tree of vimrcs
+TODO3: add all options from option.c (see src/nvim/option.c)
+TODO4: cover the entire github periodically
 
 This script scrapes vimrc's hosted in github and returns the most commonly used vim configurations.
 
@@ -20,7 +22,7 @@ def vote(default):
 #Install
 3. Make sure pathogen is available and ```execute pathogen#infect()``` is in ```~/.vimrc```
 2. ```cd ~/.vim/bundle```
-3. ```git clone git://github.com/tpope/vim-fugitive.git```
+3. ```git clone git://github.com/rht/eigenvimrc.git```
 
 #Result
 ```syntax on``` > ```set nocompatible```
@@ -136,4 +138,4 @@ Strangely it doesn't follow the power law distribution. Likely because some sett
 #Data
 Repository list is queried from [http://ghtorrent.org/dblite/](http://ghtorrent.org/dblite/)
 
-```select * from projects where language = 'VimL' and name = 'dotfiles'```
+```SELECT * FROM projects WHERE language = 'VimL' AND ((name = 'dotfiles') OR (name = 'vimrc'))```

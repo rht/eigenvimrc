@@ -6,38 +6,16 @@ import time
 
 import util
 
-# requires internet connection
-step1 = 0
-step2 = 0  # 2  # most time intensive, 2 for ghtorrent.csv, 1 for github.json
+# requires internet connection; time intensive
+step2 = 0  # 2 for ghtorrent.csv, 1 for github.json
 
 # doesn't require internet connection
 step3 = step4 = step5 = 1
+step5 = 0
 
 api_url = "https://api.github.com/search/repositories"
 content_url = "https://raw.githubusercontent.com/"
 tic = time.time()
-
-# step 1: collect links to vimrc's
-if step1:
-    print "collecting vimrc links..."
-    page = 1
-
-    txts = json.loads("{}")
-    while page < 33:
-        r = requests.get('%s?q=vimrc&L=VimL&page=%d'
-                         % (api_url, page))
-        if r.status_code == 200:
-            items = json.loads(r.text.encode('utf8'))['items']
-            if txts:
-                txts['items'].extend(items)
-            else:
-                txts['items'] = items
-            print "receiving page %d, length %d" \
-                  % (page, len(items))
-        time.sleep(.1)
-        page += 1
-    with open('github.json', 'wb') as f:
-        json.dump(txts, f)
 
 # step 2: scrape vimrc's
 if step2:
@@ -101,6 +79,9 @@ if step3:
                 sanitized_line = sanitized_line.replace(" = ", "=")
                 # format short-hand keyword
                 sanitized_line = util.keyword_reformat(sanitized_line)
+                if len(sanitized_line)>0 and sanitized_line[-1] == ' ':
+                    print "ugh"
+                    exit()
                 # strip comment
                 # detection is done by checking if the number of quotes
                 # are odd
@@ -137,9 +118,11 @@ if step5:
     if not step3:
         print "this step depends on step #3, please enable step3"
         exit()
+    import matplotlib.pyplot as plt
+    plt.style.use('ggplot')
     import pylab
     y = [i[1] for i in eigenvimrc]
-    x = range(1, len(y)+1)
+    x = range(1, len(y) + 1)
     pylab.scatter(x, y, c='r')
     pylab.ylabel("Number of usage")
 
@@ -147,7 +130,10 @@ if step5:
     import scipy.optimize as optimize
     logx = pylab.log10(x)
     logy = pylab.log10(y)
-    fitfunc = lambda p, x: p[0] + p[1] * x
+
+    def fitfunc(p, x):
+        return p[0] + p[1] * x
+
     errfunc = lambda p, x, y: (y - fitfunc(p, x)) ** 2
     powerlaw = lambda x, amp, index: amp * (x**index)
     pinit = [1.0, -1.0]
