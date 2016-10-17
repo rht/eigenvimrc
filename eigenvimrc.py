@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 import os
 import json
 import requests
 import collections
 import time
+import unicodedata
 
 import util
 
@@ -11,7 +13,6 @@ step2 = 0  # 2 for ghtorrent.csv, 1 for github.json
 
 # doesn't require internet connection
 step3 = step4 = step5 = 1
-step5 = 0
 
 api_url = "https://api.github.com/search/repositories"
 content_url = "https://raw.githubusercontent.com/"
@@ -59,6 +60,7 @@ if step2:
 if step3:
     vimrcs = []
     total_vimrc = 0
+    outstr = []
     excluded_keywords = ['endfunction', 'endfunc', 'call', 'if ', 'else',
                          'endif', 'return', 'augroup', 'Bundle', 'execute',
                          '\\ }', '\\', 'endfun', 'endf', 'try', 'endtry',
@@ -79,14 +81,11 @@ if step3:
                 sanitized_line = sanitized_line.replace(" = ", "=")
                 # format short-hand keyword
                 sanitized_line = util.keyword_reformat(sanitized_line)
-                if len(sanitized_line)>0 and sanitized_line[-1] == ' ':
-                    print "ugh"
-                    exit()
                 # strip comment
                 # detection is done by checking if the number of quotes
                 # are odd
                 if line.count('"') % 2 != 0:
-                    sanitized_line = sanitized_line[:sanitized_line.rfind('"')]
+                    sanitized_line = sanitized_line[:sanitized_line.rfind('"')].strip()
                 # only append when line is not empty
                 if len(sanitized_line) > 0:
                     sanitized_txt.append(sanitized_line)
@@ -95,10 +94,14 @@ if step3:
     # flatten the nested list
     vimrcs = [item for sublist in vimrcs for item in sublist]
 
-    print "Most common vim config out of " + str(total_vimrc) + " vimrc's\n"
+    outstr.append("Most common vim config out of " + str(total_vimrc) + " vimrc's\n")
     eigenvimrc = collections.Counter(vimrcs).most_common(100)
     for n, i in enumerate(eigenvimrc):
-        print "%d. ```%s``` %.2f%%" % (n, i[0], i[1]*100./total_vimrc)
+        outstr.append("%d. ```%s``` %.2f%%" % (n, i[0], i[1]*100./total_vimrc))
+    outfile = open("README.md", "w")
+    head = open("README.head.md", "r").read()
+    tail = open("README.tail.md", "r").read()
+    outfile.write(head + "\n".join(outstr) + tail)
 
 # step 4: generate eigenvimrc.vim
 if step4:
@@ -110,7 +113,7 @@ if step4:
         os.makedirs("plugin")
     with open('plugin/eigenvimrc.vim', 'wb') as f:
         for i in eigenvimrc:
-            if i[1]*100./total_vimrc >= 30:  # 30% most used
+            if i[1]*100./total_vimrc >= 40:  # 40% most used
                 f.write(i[0]+'\n')
 
 # step 5: generate plot for analysis
@@ -118,6 +121,8 @@ if step5:
     if not step3:
         print "this step depends on step #3, please enable step3"
         exit()
+    import matplotlib
+    matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     plt.style.use('ggplot')
     import pylab

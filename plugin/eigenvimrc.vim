@@ -1,16 +1,15 @@
+set nocompatible
 syntax on
 set number
-set nocompatible
-filetype plugin indent on
 set expandtab
-set laststatus=2
-set hlsearch
 set incsearch
-set ignorecase
-let mapleader=","
-set background=dark
-set backspace=indent,eol,start
+set hlsearch
+set laststatus=2
+filetype plugin indent on
 set ruler
+set ignorecase
 set autoindent
-set tabstop=2
+set showcmd
+set backspace=indent,eol,start
 set wildmenu
+set background=dark
