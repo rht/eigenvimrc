@@ -19,12 +19,12 @@ def vote(default):
         return new_default
 ```
 
-#Install
+# Install
 3. Make sure pathogen is available and ```execute pathogen#infect()``` is in ```~/.vimrc```
 2. ```cd ~/.vim/bundle```
 3. ```git clone git://github.com/rht/eigenvimrc.git```
 
-#Result
+# Result
 ```set nocompatible``` > ```syntax on```
 
 
@@ -131,7 +131,7 @@ Most common vim config out of 13759 vimrc's
 98. ```vnoremap > >gv``` 7.17%
 99. ```set foldmethod=indent``` 7.07%
 
-#Colorscheme stat
+# Colorscheme stat
 0. solarized 25.00%
 1. molokai 11.44%
 2. desert 6.19%
@@ -143,7 +143,7 @@ Most common vim config out of 13759 vimrc's
 8. vividchalk 1.72%
 9. railscasts 1.71%
 
-#Plugin manager stat
+# Plugin manager stat
 
 vam: 0.34%
 vundle: 10.39%
@@ -153,11 +153,11 @@ dein: 0.00%
 pathogen: 14.91%
 
 
-#Plot
+# Plot
 Strangely it doesn't follow the power law distribution. Likely because some settings are highly correlated with the others.
 ![plot](fig.png)
 
-#Data
+# Data
 Repository list is queried from [http://ghtorrent.org/dblite/](http://ghtorrent.org/dblite/)
 
 ```SELECT * FROM projects WHERE language = 'VimL' AND ((name = 'dotfiles') OR (name = 'vimrc'))```

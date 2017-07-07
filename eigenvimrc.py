@@ -36,7 +36,7 @@ def get_stat(vimrcs, total_vimrcs):
     outstr = []
     outstr.append("Most common vim config out of " + str(total_vimrcs) + " vimrc's\n")
 
-    eigenvimrc = collections.Counter(vimrcs).most_common(100)
+    eigenvimrc = collections.Counter(vimrcs).most_common(80)
     for n, i in enumerate(eigenvimrc):
         outstr.append("%d. ```%s``` %.2f%%" % (n, i[0], i[1]*100./total_vimrcs))
     return '\n'.join(outstr), eigenvimrc
@@ -63,6 +63,7 @@ class pm_stat:  # pm stands for plugin manager
                 'vam': 0,
                 'neobundle': 0,
                 'dein': 0,
+                'plug': 0,
                 'others or none':0
                 }
     def get_pm_type(self, text):
@@ -76,6 +77,8 @@ class pm_stat:  # pm stands for plugin manager
             self.pms['neobundle'] += 1
         elif 'call dein#begin' in text:
             self.pms['dein'] += 1
+        elif 'call plug#begin' in text:
+            self.pms['plug'] += 1
         else:
             self.pms['others or none'] += 1
     def out(self):
