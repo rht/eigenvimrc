@@ -17,6 +17,7 @@ step3 = step4 = step5 = 1
 
 api_url = "https://api.github.com/search/repositories"
 content_url = "https://raw.githubusercontent.com/"
+data_dir = 'data'
 
 def get_colorscheme_stat(vimrcs):
     colorschemes = []
@@ -29,7 +30,7 @@ def get_colorscheme_stat(vimrcs):
     total = len(colorschemes)
     cs = collections.Counter(colorschemes).most_common(10)
     for n, i in enumerate(cs):
-        outstr.append("%d. %s %.2f%%" %(n, i[0], i[1]*100./total))
+        outstr.append("%d. %s %.2f%%" % (n, i[0], i[1] * 100. / total))
     return '\n\n#Colorscheme stat\n' + '\n'.join(outstr) + '\n'
 
 def get_stat(vimrcs, total_vimrcs):
@@ -38,7 +39,7 @@ def get_stat(vimrcs, total_vimrcs):
 
     eigenvimrc = collections.Counter(vimrcs).most_common(80)
     for n, i in enumerate(eigenvimrc):
-        outstr.append("%d. ```%s``` %.2f%%" % (n, i[0], i[1]*100./total_vimrcs))
+        outstr.append("%d. ```%s``` %.2f%%" % (n, i[0], i[1] * 100. / total_vimrcs))
     return '\n'.join(outstr), eigenvimrc
 
 def sanitize_line(line):
@@ -58,14 +59,14 @@ def sanitize_line(line):
 class pm_stat:  # pm stands for plugin manager
     def __init__(self):
         self.pms = {
-                'pathogen': 0,
-                'vundle': 0,
-                'vam': 0,
-                'neobundle': 0,
-                'dein': 0,
-                'plug': 0,
-                'others or none':0
-                }
+            'pathogen': 0,
+            'vundle': 0,
+            'vam': 0,
+            'neobundle': 0,
+            'dein': 0,
+            'plug': 0,
+            'others or none': 0}
+
     def get_pm_type(self, text):
         if 'call pathogen#infect' in text:
             self.pms['pathogen'] += 1
@@ -81,12 +82,13 @@ class pm_stat:  # pm stands for plugin manager
             self.pms['plug'] += 1
         else:
             self.pms['others or none'] += 1
+
     def out(self):
         total = sum(self.pms.values())
         outstr = "\n#Plugin manager stat\n\n"
         for k, v in self.pms.iteritems():
             p = v * 100. / total
-            outstr += "%s: %.2f%%\n" %(k, p)
+            outstr += "%s: %.2f%%\n" % (k, p)
         return outstr
 
 tic = time.time()
@@ -108,25 +110,26 @@ if step2:
     offset = 0
 
     def save_text(repo, request):
-        with open('github_vimrcs/'+repo['full_name'].replace('/', ''), 'wb') \
+        with open(data_dir + '/' + repo['full_name'].replace('/', ''), 'wb') \
                 as f:
             f.write(request.text.encode('utf8'))
 
     # essentially `mkdir -p github_vimrcs`
-    if not os.path.isdir("github_vimrcs"):
-        os.makedirs("github_vimrcs")
+    if not os.path.isdir(data_dir):
+        os.makedirs(data_dir)
+
     for i in data:
         if counter > offset:
-            r = requests.get(content_url+i['full_name']+'/master/.vimrc')
+            r = requests.get(content_url + i['full_name'] + '/master/.vimrc')
             if r.status_code == 200:
                 save_text(i, r)
             else:
-                r2 = requests.get(content_url+i['full_name']+'/master/vimrc')
+                r2 = requests.get(content_url + i['full_name'] + '/master/vimrc')
                 if r2.status_code == 200:
                     save_text(i, r2)
 
         counter += 1
-        print("%d %.2f%%" % (counter, counter*1./len(data)*100))
+        print("%d %.2f%%" % (counter, counter * 1. / len(data) * 100))
 
 # step 3: process data
 if step3:
@@ -138,9 +141,9 @@ if step3:
                          '\\ }', '\\', 'endfun', 'endf', 'try', 'endtry',
                          'endwhile', 'catch', 'end', 'au!']
 
-    filenames = os.listdir('github_vimrcs')
+    filenames = os.listdir(data_dir)
     for vimrc in filenames:
-        txt = open('github_vimrcs/'+vimrc).read().split('\n')
+        txt = open(data_dir + '/' + vimrc).read().split('\n')
         if len(txt) < 10:
             continue
         total_vimrcs += 1
@@ -178,8 +181,8 @@ if step4:
         os.makedirs("plugin")
     with open('plugin/eigenvimrc.vim', 'wb') as f:
         for i in eigenvimrc:
-            if i[1]*100./total_vimrcs >= 40:  # 40% most used
-                f.write(i[0]+'\n')
+            if i[1] * 100. / total_vimrcs >= 40:  # 40% most used
+                f.write(i[0] + '\n')
 
 # step 5: generate plot for analysis
 if step5:

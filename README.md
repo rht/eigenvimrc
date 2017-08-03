@@ -158,6 +158,8 @@ Strangely it doesn't follow the power law distribution. Likely because some sett
 ![plot](fig.png)
 
 # Data
+
+Last updated Mar 31 2017.
 Repository list is queried from [http://ghtorrent.org/dblite/](http://ghtorrent.org/dblite/)
 
 ```SELECT * FROM projects WHERE language = 'VimL' AND ((name = 'dotfiles') OR (name = 'vimrc'))```
